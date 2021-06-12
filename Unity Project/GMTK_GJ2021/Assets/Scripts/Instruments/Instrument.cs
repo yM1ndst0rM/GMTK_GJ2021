@@ -9,7 +9,7 @@ namespace Instruments
     {
         public InstrumentType type;
         public AudioClip clip;
-        public List<MatchDimension> matchesWell { get; private set; } = new List<MatchDimension>();
+        public List<MatchDimension> matchesWell = new List<MatchDimension>();
 
         private void OnEnable()
         {

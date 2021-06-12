@@ -3,6 +3,7 @@ using System.Linq;
 
 namespace Instruments
 {
+    
     public interface ITuneConstraint
     {
         bool Matches(IEnumerable<Instrument> instrument);

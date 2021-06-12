@@ -10,17 +10,31 @@ namespace Instruments
 {
     public class InstrumentManager : MonoBehaviour
     {
-        public readonly List<GameObject> InstrumentTemplates = new List<GameObject>();
-        public readonly List<ITuneConstraint> PossibleConstraints = new List<ITuneConstraint>();
+        public List<GameObject> InstrumentTemplates = new List<GameObject>();
+
+        public readonly List<ITuneConstraint> PossibleConstraints = new List<ITuneConstraint>()
+        {
+            new TuneContainsInstrumentConstraint(InstrumentType.Guitar),
+            new TuneContainsInstrumentConstraint(InstrumentType.Banjo),
+            new TuneContainsInstrumentConstraint(InstrumentType.Saxophone),
+            new TuneContainsInstrumentConstraint(InstrumentType.Flute),
+            new TuneContainsInstrumentConstraint(InstrumentType.Harp),
+            new TuneDoesNotContainInstrumentConstraint(InstrumentType.Harp),
+            new TuneDoesNotContainInstrumentConstraint(InstrumentType.Banjo),
+        };
+                
+
         public float MaxInstrumentInfluenceDistance = 10;
         private readonly List<GameObject> Instruments = new List<GameObject>();
 
         private static readonly MatchDimension[] _availableMatchDimensions =
             (MatchDimension[]) Enum.GetValues(typeof(MatchDimension));
+
         private IEnumerable<Instrument> GetAllAudibleInstruments(GameObject target)
         {
             return Instruments
-                .FindAll( i => Vector3.Distance(i.transform.position, target.transform.position) < MaxInstrumentInfluenceDistance )
+                .FindAll(i =>
+                    Vector3.Distance(i.transform.position, target.transform.position) < MaxInstrumentInfluenceDistance)
                 .Select(i => i.GetComponent<Instrument>());
         }
 
@@ -50,11 +64,13 @@ namespace Instruments
 
     public enum InstrumentType
     {
-        Drums,
         Guitar,
-        Banjo
+        Banjo,
+        Saxophone,
+        Flute,
+        Harp
     }
-
+    
     public enum MatchDimension
     {
         SectionA,
