@@ -1,7 +1,9 @@
-﻿namespace DefaultNamespace
+﻿using System.Collections.Generic;
+
+namespace Instruments
 {
-    public interface TuneConstraint
+    public interface ITuneConstraint
     {
-        public bool matches(List<Instrument> instrument);
+        bool Matches(List<Instrument> instrument);
     }
 }

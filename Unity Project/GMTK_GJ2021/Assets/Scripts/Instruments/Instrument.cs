@@ -1,9 +1,9 @@
-﻿namespace DefaultNamespace
+﻿namespace Instruments
 {
 
     public class Instrument
     {
-        public InstrumentType Type;
+        public InstrumentManager.InstrumentType Type;
         public int SoundBiteId;
     }
 }
