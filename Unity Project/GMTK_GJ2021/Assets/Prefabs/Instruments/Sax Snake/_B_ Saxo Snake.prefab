@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: fcc70a46d90970d48a06634586f304fb, type: 3}
   matchesWell: 00000000
 --- !u!1001 &2146460668619742733
 PrefabInstance:
