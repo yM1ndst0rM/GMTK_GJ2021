@@ -1,96 +1,93 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ControlPlayer : MonoBehaviour
 {
+    /* Class: ControlPlayer
+     * 
+     * Purpose: This class controls the following player abilities
+     *      Movement
+     *      Pickup item
+     *      Place item
+     * 
+     */
 
-	/* Class: ControlPlayer
-	 * 
-	 * Purpose: This class controls the following player abilities
-	 *      Movement
-	 *      Pickup item
-	 *      Place item
-	 * 
-	 */
+    Animator anim;
+    float speedX = 250.0f, speedY = 250.0f, maxSpeed = 250f;
+    private Rigidbody2D player;
+    float horizontalMove = 0f, verticalMove = 0f;
+    private SpriteRenderer playerRenderer;
 
-	Animator anim;
-	float speedX = 250.0f, speedY = 250.0f, maxSpeed = 250f;
-	private Rigidbody2D player;
-	private bool hasItem;
-	float horizontalMove = 0f, verticalMove = 0f;
-	private SpriteRenderer playerRenderer;
-	public AudioClip pickUpSound, putDownSound;
-	private AudioSource playerAudioSource;
-	
+    private bool _isCarryingInstrument;
+    private InstrumentInteraction _instrumentInteraction;
 
+    public bool IsCarryingInstrument
+    {
+        get => _isCarryingInstrument;
+        set
+        {
+            if (_isCarryingInstrument == value) return;
 
-	// Start is called before the first frame update
-	void Start()
-	{
-		anim = GetComponent<Animator>();
-		player = GetComponent<Rigidbody2D>();
-		playerRenderer = GetComponent<SpriteRenderer>();
-		playerAudioSource = GetComponent<AudioSource>();
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-		Debug.Log(Input.GetAxisRaw("Vertical"));
-
-		if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
-		{
-			anim.SetBool("isWalking", true);
-			//MovePlayer();
-		}
-		else
-			anim.SetBool("isWalking", false);
-
-		if (Input.GetKeyDown(KeyCode.E))
-		{
-			if(hasItem == false)
-			{
-				PickUpItem();
-				hasItem = true;
-			}
-			else
-			{
-				PutDownItem();
-				hasItem = false;
-			}
-		}
-	}
-
-	private void FixedUpdate()
-	{
-		horizontalMove = Input.GetAxisRaw("Horizontal");
-		verticalMove = Input.GetAxisRaw("Vertical");
-
-		if (Input.GetAxisRaw("Horizontal") == -1)
-			playerRenderer.flipX = true;
-		else if(Input.GetAxisRaw("Horizontal") == 1)
-			playerRenderer.flipX = false;
+            anim.SetBool("hasItem", value);
+            _isCarryingInstrument = value;
+        }
+    }
 
 
-		player.velocity = new Vector3(horizontalMove * speedX, verticalMove * speedY, 0f);
-	}
+    void Start()
+    {
+        _instrumentInteraction = GetComponent<InstrumentInteraction>();
+        anim = GetComponent<Animator>();
+        player = GetComponent<Rigidbody2D>();
+        playerRenderer = GetComponent<SpriteRenderer>();
+    }
 
-	void PickUpItem()
-	{
-		playerAudioSource.clip = pickUpSound;
-		playerAudioSource.Play();
-		anim.SetBool("hasItem", true);
-	}
+    // Update is called once per frame
+    void Update()
+    {
+        anim.SetBool("isWalking",
+            Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0 || Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0);
 
-	void PutDownItem()
-	{
-		playerAudioSource.clip = putDownSound;
-		playerAudioSource.Play();
-		anim.SetBool("hasItem", false);
-	}
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (!_isCarryingInstrument)
+            {
+                PickUpItem();
+            }
+            else
+            {
+                PutDownItem();
+            }
+        }
+    }
 
+    private void FixedUpdate()
+    {
+        horizontalMove = Input.GetAxisRaw("Horizontal");
+        verticalMove = Input.GetAxisRaw("Vertical");
 
+        if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            playerRenderer.flipX = true;
+        }
+        else if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            playerRenderer.flipX = false;
+        }
 
+        player.velocity = new Vector3(horizontalMove * speedX, verticalMove * speedY, 0f);
+    }
 
+    void PickUpItem()
+    {
+        Debug.Log($"PickUp on {nameof(ControlPlayer)}");
+        _instrumentInteraction.PickUpInstrument();
+    }
+
+    void PutDownItem()
+    {
+        _instrumentInteraction.PutDownInstrument();
+    }
 }

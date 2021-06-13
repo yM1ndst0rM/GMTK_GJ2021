@@ -10,6 +10,8 @@ namespace Instruments
 {
     public class InstrumentManager : MonoBehaviour
     {
+        public static InstrumentManager Instance { get; private set; }
+
         public List<GameObject> InstrumentTemplates = new List<GameObject>();
 
         public readonly List<ITuneConstraint> PossibleConstraints = new List<ITuneConstraint>()
@@ -30,6 +32,11 @@ namespace Instruments
         private static readonly MatchDimension[] _availableMatchDimensions =
             (MatchDimension[]) Enum.GetValues(typeof(MatchDimension));
 
+        public IEnumerable<Instrument> GetAllInstruments()
+        {
+            return Instruments.AsEnumerable();
+        }
+        
         public IEnumerable<Instrument> GetAllAudibleInstruments(GameObject target)
         {
             return Instruments
@@ -58,6 +65,22 @@ namespace Instruments
         public ITuneConstraint GetRandomizedConstraint()
         {
             return PossibleConstraints[UnityEngine.Random.Range(0, PossibleConstraints.Count - 1)];
+        }
+
+        private void OnEnable()
+        {
+            Instance = this;
+        }
+
+        public void RegisterInstrument(Instrument i)
+        {
+            Instruments.Remove(i);
+            Instruments.Add(i);
+        }
+        
+        public void UnregisterInstrument(Instrument i)
+        {
+            Instruments.Remove(i);
         }
     }
 
