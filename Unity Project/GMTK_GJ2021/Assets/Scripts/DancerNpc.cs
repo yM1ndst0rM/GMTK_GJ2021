@@ -6,7 +6,7 @@ using Instruments;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DancerNPC : MonoBehaviour
+public class DancerNpc : MonoBehaviour
 {
     public enum State
     {
@@ -23,9 +23,11 @@ public class DancerNPC : MonoBehaviour
     public List<ITuneConstraint> Constraints;
     public State currentState = State.Spawning;
     public UnityEvent<State> OnDancerStateChanged;
+    public UnityEvent<int> OnPlayerRewardEarned;
 
     private float _patienceDeadline;
     private float _dancingDeadline;
+    private int _currentPlayerReward = 0;
 
     private InstrumentManager _iM;
 
@@ -48,6 +50,7 @@ public class DancerNPC : MonoBehaviour
                     if (_iM.AreListenerConstraintsSatisfied(Constraints, audibleInstruments))
                     {
                         _dancingDeadline = Time.time + dancingDurationInSeconds;
+                        _currentPlayerReward = Mathf.CeilToInt(_patienceDeadline - Time.time);
                         GoToState(State.Dancing);
                     }
                     else
@@ -65,18 +68,21 @@ public class DancerNPC : MonoBehaviour
             case State.Dancing:
                 if (!_iM.IsATune(audibleInstruments))
                 {
+                    _currentPlayerReward = 0;
                     GoToState(State.Idle);
                 }
                 else
                 {
                     if (!_iM.AreListenerConstraintsSatisfied(Constraints, audibleInstruments))
                     {
+                        _currentPlayerReward = 0;
                         GoToState(State.CantStandThis);
                     }
                     else
                     {
                         if (Time.time > _dancingDeadline)
                         {
+                            OnPlayerRewardEarned.Invoke(_currentPlayerReward);
                             GoToState(State.DespawningHappy);
                         }
                     }
@@ -93,6 +99,7 @@ public class DancerNPC : MonoBehaviour
                     if (_iM.AreListenerConstraintsSatisfied(Constraints, audibleInstruments))
                     {
                         _dancingDeadline = Time.time + dancingDurationInSeconds;
+                        _currentPlayerReward = Mathf.CeilToInt(_patienceDeadline - Time.time);
                         GoToState(State.Dancing);
                     }
                     else if (Time.time > _patienceDeadline)
