@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 45.8}
-  m_SizeDelta: {x: 263.15, y: 112.65}
+  m_AnchoredPosition: {x: 0, y: 95}
+  m_SizeDelta: {x: 643.1774, y: 238.905}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5551920622551993227
 CanvasRenderer:
@@ -67,18 +67,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 24
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 40
+    m_MinSize: 1
+    m_MaxSize: 100
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: INSTRUMENT GAME THING FOR GAME JAM BABY!
+  m_Text: Jamphibians
 --- !u!1 &5551920622635094700
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +167,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5551920622727049337}
-  - component: {fileID: 5551920622727049336}
   m_Layer: 5
   m_Name: Panel - SplashScreen
   m_TagString: Untagged
@@ -195,19 +194,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5551920622727049336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5551920622727049338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ffebbb043117f54ca64712017716505, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _startButton: {fileID: 5551920624416445790}
 --- !u!1 &5551920623423416993
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,8 +267,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -98}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -10, y: -58}
+  m_SizeDelta: {x: 296.5269, y: 55.5988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5551920624416445788
 CanvasRenderer:
@@ -365,4 +351,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5551920624416445789}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ManageButtons, Assembly-CSharp
+        m_MethodName: LoadSceneByIndex
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
