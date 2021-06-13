@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 54fe5cbd1be5aaf4a8db44e82d4ceedb, type: 3}
   matchesWell: 00000000
 --- !u!1 &6736375846614705885
 GameObject:
