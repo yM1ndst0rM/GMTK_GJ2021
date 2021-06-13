@@ -228,7 +228,7 @@ Animator:
   m_GameObject: {fileID: 4557654456982470603}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 88cd3e262bb74a843b58fcdce85a9b17, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7d5a5f14bf739a943b3131f87346ce7f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -335,6 +335,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5104527372574010819, guid: a9645c684808b01459f9570a1390fa05,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 0.5137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 5104527372574010819, guid: a9645c684808b01459f9570a1390fa05,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 0.52156866
+      objectReference: {fileID: 0}
+    - target: {fileID: 5104527372574010819, guid: a9645c684808b01459f9570a1390fa05,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 0.28235295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9645c684808b01459f9570a1390fa05, type: 3}
