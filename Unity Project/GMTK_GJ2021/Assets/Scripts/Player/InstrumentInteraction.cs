@@ -74,6 +74,7 @@ public class InstrumentInteraction : MonoBehaviour
     {
         if (_pickedUpInstrument == null) return;
 
+        _pickedUpInstrument.SnapToNearestTile();
         _pickedUpInstrument = null;
         _player.IsCarryingInstrument = false;
         _playerAudioSource.PlayOneShot(putDownSound);
