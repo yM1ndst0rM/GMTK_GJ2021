@@ -11,9 +11,13 @@ namespace Instruments
     public class InstrumentManager : MonoBehaviour
     {
         public static InstrumentManager Instance { get; private set; }
+        public float LoopDuration = 10.323f;
+        private float _nextSpawnTime;
 
         public List<GameObject> InstrumentTemplates = new List<GameObject>();
-
+        public GameObject MusicInstrumentContainer;
+        public int InstrumentSpawnRate;
+        
         public readonly List<ITuneConstraint> PossibleConstraints = new List<ITuneConstraint>()
         {
             new TuneContainsInstrumentConstraint(InstrumentType.Guitar),
@@ -81,6 +85,31 @@ namespace Instruments
         public void UnregisterInstrument(Instrument i)
         {
             Instruments.Remove(i);
+        }
+
+
+        private void Start()
+        {
+            _nextSpawnTime = Time.time;
+        }
+
+        private void Update()
+        {
+            if (_nextSpawnTime <= Time.time)
+            {
+                _nextSpawnTime += LoopDuration;
+                var tiles = GameObject.FindGameObjectsWithTag("tiles");
+                for (int i = 0; i < InstrumentSpawnRate; i++)
+                {
+                    var nextInstrumentIndex = Mathf.FloorToInt(Random.Range(0, InstrumentTemplates.Count - 1));
+                    var nextTile = tiles[Mathf.FloorToInt(Random.Range(0, tiles.Length - 1))];
+
+                    var newInstrument = Instantiate(InstrumentTemplates[nextInstrumentIndex], nextTile.transform.position,
+                        Quaternion.identity);
+
+                    newInstrument.transform.parent = MusicInstrumentContainer.transform;
+                }
+            }
         }
     }
 

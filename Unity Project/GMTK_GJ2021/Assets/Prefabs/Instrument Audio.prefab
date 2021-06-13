@@ -140,8 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e542d131396013e409f337c50add2376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoopDurationInSeconds: 20
-  LifetimeInLoops: 5
+  LoopDurationInSeconds: 10.323
+  LifetimeInLoops: 10
   OnInstrumentStateChanged:
     m_PersistentCalls:
       m_Calls: []

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class InstrStateMachine : MonoBehaviour
 {
-    public int LoopDurationInSeconds;
+    public float LoopDurationInSeconds;
     public int LifetimeInLoops;
     public State CurrentState { get; private set; }
     public UnityEvent<State> OnInstrumentStateChanged;

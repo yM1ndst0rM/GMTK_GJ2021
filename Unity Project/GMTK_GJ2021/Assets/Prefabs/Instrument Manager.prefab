@@ -43,8 +43,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad15dde1a10e5744ac4625b05aa26a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LoopDuration: 10.323
   InstrumentTemplates:
-  - {fileID: 8929228970021665192, guid: bd345aef415618446ab5446bb691fe65, type: 3}
+  - {fileID: 1388900202458459609, guid: dd6ae7804bdd09945a0e2f209f4eb30f, type: 3}
+  - {fileID: 2780572910429499021, guid: 665f496882fb55d44b685258609a63fb, type: 3}
+  - {fileID: 3019123135254990839, guid: a850566fc8b992f4480a6ac75f5a6253, type: 3}
+  - {fileID: 1896014422290402539, guid: fa6ece0fb1824de4d883cf9fb15dcac5, type: 3}
   - {fileID: 8929228970021665192, guid: aa3ab1338a473004892ec6a91a7542c4, type: 3}
-  - {fileID: 8929228970021665192, guid: aa3ab1338a473004892ec6a91a7542c4, type: 3}
+  - {fileID: 1388900202458459609, guid: 74f4dc1b76777424982e774ae54eeab4, type: 3}
+  - {fileID: 2780572910429499021, guid: ce8feab6f0fc05444bf760df3c28fe48, type: 3}
+  - {fileID: 3019123135254990839, guid: 1c309fd48860fe54e87480a2a23629cc, type: 3}
+  - {fileID: 1896014422290402539, guid: 00d29e7fa0329854ab0afa2d8160c59a, type: 3}
+  - {fileID: 8929228970021665192, guid: 74f9ade40612b23459c529c1b559ac7f, type: 3}
+  - {fileID: 1388900202458459609, guid: 6e9241aa50e8d15408822242141e9394, type: 3}
+  - {fileID: 2780572910429499021, guid: fe6dd2c6239a9f5478105bf3cae09f99, type: 3}
+  - {fileID: 3019123135254990839, guid: c943a29c1ddc67345a048855b86ae596, type: 3}
+  - {fileID: 1896014422290402539, guid: 6fe7e8306d343c941b1e42a6c4a4219e, type: 3}
+  - {fileID: 8929228970021665192, guid: 46765f8d27133bf419ca6eb0d67e205b, type: 3}
+  - {fileID: 1388900202458459609, guid: 7130cfcd8232fae46bcbf775a3dc45b8, type: 3}
+  - {fileID: 2780572910429499021, guid: 2df2949fd248f5c41aa22b9febe3557f, type: 3}
+  - {fileID: 3019123135254990839, guid: 080ed7a4aa78e8c429512e12c72f4244, type: 3}
+  - {fileID: 1896014422290402539, guid: 6945c282d0d77464fa8740697d939d61, type: 3}
+  - {fileID: 8929228970021665192, guid: 9d0683ed48a2447409eac7e8cf63b8b3, type: 3}
+  - {fileID: 1388900202458459609, guid: 2120659d4cb0d0344933cef43d4dbcf0, type: 3}
+  - {fileID: 3019123135254990839, guid: 2b1e2b9d154ee5c4dbe14f0ecfe6d5e8, type: 3}
+  - {fileID: 2780572910429499021, guid: b547f8996931a2d4a827f41dae808d0d, type: 3}
+  - {fileID: 1896014422290402539, guid: 8dbcccf3d22d1f64fae8028c06d440b1, type: 3}
+  - {fileID: 8929228970021665192, guid: f28d1440e8405454fa172eeac117cb1d, type: 3}
+  MusicInstrumentContainer: {fileID: 0}
+  InstrumentSpawnRate: 3
   MaxInstrumentInfluenceDistance: 10
