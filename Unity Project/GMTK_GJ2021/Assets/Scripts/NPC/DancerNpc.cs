@@ -129,7 +129,10 @@ public class DancerNpc : MonoBehaviour
 
     private void GoToState(State newState)
     {
-        currentState = newState;
-        OnDancerStateChanged.Invoke(currentState);
+		Debug.Log("newState is currently: " + newState);
+        //currentState = newState;
+        //OnDancerStateChanged.Invoke(currentState);
+
+		//if(newState == State.Idle)
     }
 }

@@ -19,7 +19,7 @@ public class ControlPlayer : MonoBehaviour
     private Rigidbody2D player;
     float horizontalMove = 0f, verticalMove = 0f;
     private SpriteRenderer playerRenderer;
-
+	public AudioSource feetAudio;
     private bool _isCarryingInstrument;
     private InstrumentInteraction _instrumentInteraction;
 
@@ -75,7 +75,23 @@ public class ControlPlayer : MonoBehaviour
         else if (Input.GetAxisRaw("Horizontal") > 0)
         {
             playerRenderer.flipX = false;
+
         }
+		/*
+		if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+		{
+			feetAudio.Play();
+			Debug.Log("we're walkin here!");
+		}
+		else
+		{
+			feetAudio.Stop();
+			Debug.Log("Stopping feet noise");
+		}
+			*/
+
+
+		
 
         player.velocity = new Vector3(horizontalMove * speedX, verticalMove * speedY, 0f);
     }
