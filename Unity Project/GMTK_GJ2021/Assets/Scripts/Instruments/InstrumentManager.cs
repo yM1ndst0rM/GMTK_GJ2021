@@ -25,20 +25,19 @@ namespace Instruments
                 
 
         public float MaxInstrumentInfluenceDistance = 10;
-        private readonly List<GameObject> Instruments = new List<GameObject>();
+        private readonly List<Instrument> Instruments = new List<Instrument>();
 
         private static readonly MatchDimension[] _availableMatchDimensions =
             (MatchDimension[]) Enum.GetValues(typeof(MatchDimension));
 
-        private IEnumerable<Instrument> GetAllAudibleInstruments(GameObject target)
+        public IEnumerable<Instrument> GetAllAudibleInstruments(GameObject target)
         {
             return Instruments
                 .FindAll(i =>
-                    Vector3.Distance(i.transform.position, target.transform.position) < MaxInstrumentInfluenceDistance)
-                .Select(i => i.GetComponent<Instrument>());
+                    Vector3.Distance(i.transform.position, target.transform.position) < MaxInstrumentInfluenceDistance);
         }
 
-        private bool IsATune(IReadOnlyCollection<Instrument> instruments)
+        public bool IsATune(IReadOnlyCollection<Instrument> instruments)
         {
             //make sure minimum amount of instruments is present
             if (instruments.Count < 3)
@@ -51,9 +50,9 @@ namespace Instruments
                 (matches, i) => matches.Intersect(i.matchesWell).ToList()).Count > 0;
         }
 
-        private bool AreListenerConstraintsSatisfied(TuneListener l, IReadOnlyCollection<Instrument> instruments)
+        public bool AreListenerConstraintsSatisfied(IEnumerable<ITuneConstraint> l, IEnumerable<Instrument> instruments)
         {
-            return l.Constraints.All(c => c.Matches(instruments));
+            return l.All(c => c.Matches(instruments));
         }
 
         public ITuneConstraint GetRandomizedConstraint()
