@@ -26,12 +26,13 @@ public class InstrStateMachine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GoToState(State.Spawning);
-        _lastLoopEndTime = LifetimeInLoops * LoopDurationInSeconds + Time.time;
-        _lastLoopStartTime = _lastLoopEndTime - LoopDurationInSeconds;
+        
+        
+        Destroy(GetComponentInParent<Instrument>().gameObject, LifetimeInLoops * LoopDurationInSeconds);
+        //_lastLoopStartTime = _lastLoopEndTime - LoopDurationInSeconds;
     }
 
-    // Update is called once per frame
+    /*// Update is called once per frame
     void Update()
     {
         if (CurrentState == State.Playing && Time.time > _lastLoopStartTime)
@@ -53,12 +54,12 @@ public class InstrStateMachine : MonoBehaviour
 
     public void OnDespawningCompleted()
     {
-        Destroy(GetComponentInParent<Instrument>().gameObject);
+        Destroy(GetComponentInParent<Instrument>().gameObject, );
     }
     
     private void GoToState(State newState)
     {
         CurrentState = newState;
         OnInstrumentStateChanged.Invoke(CurrentState);
-    }
+    }*/
 }
