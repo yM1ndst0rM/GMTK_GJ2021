@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Instruments;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -51,7 +52,7 @@ public class InstrStateMachine : MonoBehaviour
 
     public void OnDespawningCompleted()
     {
-        Destroy(gameObject);
+        Destroy(GetComponentInParent<Instrument>().gameObject);
     }
     
     private void GoToState(State newState)
