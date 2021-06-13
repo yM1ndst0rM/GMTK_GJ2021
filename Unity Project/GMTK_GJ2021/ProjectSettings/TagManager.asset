@@ -11,9 +11,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Background
+  - Player
+  - Tileset
   - 
   - 
   - 
@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Player
+    uniqueID: 1212200921
+    locked: 0
+  - name: Background
+    uniqueID: 3723585769
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
