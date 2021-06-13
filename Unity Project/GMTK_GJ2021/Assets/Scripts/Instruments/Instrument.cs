@@ -17,5 +17,15 @@ namespace Instruments
             playback.clip = clip;
 			playback.Play();
         }
+
+        private void Start()
+        {
+            InstrumentManager.Instance.RegisterInstrument(this);
+        }
+
+        private void OnDestroy()
+        {
+            InstrumentManager.Instance.UnregisterInstrument(this);
+        }
     }
 }
