@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 3556108845627705483}
   - component: {fileID: 3935784930042733014}
   m_Layer: 0
-  m_Name: Saxo A
+  m_Name: _D_ Saxo Snake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  clip: {fileID: 8300000, guid: 982d51ff993c55d499432ac124cc910b, type: 3}
+  clip: {fileID: 0}
   matchesWell: 00000000
 --- !u!1001 &2146460668619742733
 PrefabInstance:
