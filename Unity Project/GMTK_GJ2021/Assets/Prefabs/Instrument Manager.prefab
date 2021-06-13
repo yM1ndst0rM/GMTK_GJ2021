@@ -46,4 +46,5 @@ MonoBehaviour:
   InstrumentTemplates:
   - {fileID: 8929228970021665192, guid: bd345aef415618446ab5446bb691fe65, type: 3}
   - {fileID: 8929228970021665192, guid: aa3ab1338a473004892ec6a91a7542c4, type: 3}
+  - {fileID: 8929228970021665192, guid: aa3ab1338a473004892ec6a91a7542c4, type: 3}
   MaxInstrumentInfluenceDistance: 10
