@@ -6,8 +6,8 @@ using UnityEngine.Events;
 
 public class InstrStateMachine : MonoBehaviour
 {
-    public float LoopDurationInSeconds;
-    public int LifetimeInLoops;
+    public float LoopDurationInSeconds = 10.323f;
+    public int LifetimeInLoops = 10;
     public State CurrentState { get; private set; }
     public UnityEvent<State> OnInstrumentStateChanged;
     
@@ -41,6 +41,7 @@ public class InstrStateMachine : MonoBehaviour
 
         if (CurrentState != State.Despawning || Time.time > _lastLoopEndTime)
         {
+            //Destroy(GetComponentInParent<Instrument>().gameObject);
             GoToState(State.Despawning);
         }
     }

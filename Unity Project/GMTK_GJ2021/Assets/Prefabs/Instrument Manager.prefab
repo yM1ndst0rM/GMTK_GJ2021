@@ -71,5 +71,5 @@ MonoBehaviour:
   - {fileID: 1896014422290402539, guid: 8dbcccf3d22d1f64fae8028c06d440b1, type: 3}
   - {fileID: 8929228970021665192, guid: f28d1440e8405454fa172eeac117cb1d, type: 3}
   MusicInstrumentContainer: {fileID: 0}
-  InstrumentSpawnRate: 3
+  InstrumentSpawnRate: 2
   MaxInstrumentInfluenceDistance: 10
