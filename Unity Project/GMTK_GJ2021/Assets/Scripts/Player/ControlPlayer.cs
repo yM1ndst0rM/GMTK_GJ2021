@@ -15,99 +15,82 @@ public class ControlPlayer : MonoBehaviour
 	 */
 
 	Animator anim;
-	float speedX = 1.0f, speedY = 1.0f;
-	public CharacterController player;
-	bool holdingDown;
+	float speedX = 250.0f, speedY = 250.0f, maxSpeed = 250f;
+	private Rigidbody2D player;
+	private bool hasItem;
+	float horizontalMove = 0f, verticalMove = 0f;
+	private SpriteRenderer playerRenderer;
+	public AudioClip pickUpSound, putDownSound;
+	private AudioSource playerAudioSource;
+	
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
+	// Start is called before the first frame update
+	void Start()
+	{
 		anim = GetComponent<Animator>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-		//Catch movement keypresses.
-		if (Input.GetKeyDown(KeyCode.W)){
-			MoveUp();
-			holdingDown = true;
-		}
-
-		if (Input.GetKeyDown(KeyCode.D))
-		{
-			MoveRight();
-			holdingDown = true;
-		}
-
-		if (Input.GetKeyDown(KeyCode.A))
-		{
-			MoveLeft();
-			holdingDown = true;
-		}
-
-		if (Input.GetKeyDown(KeyCode.S))
-		{
-			MoveDown();
-			holdingDown = true;
-		}
-
-		if (Input.GetKeyUp(KeyCode.D))
-		{
-			anim.SetBool("isWalking", false);
-			Debug.Log("Character is idle");
-		}
-
-
-		if (Input.GetKeyUp(KeyCode.W))
-		{
-			anim.SetBool("isWalking", false);
-			Debug.Log("Character is no longer moving up");
-		}
-
-		if (Input.GetKeyUp(KeyCode.D))
-		{
-			anim.SetBool("isWalking", false);
-			Debug.Log("Character is idle");
-		}
-
-		if (Input.GetKeyUp(KeyCode.S))
-		{
-			anim.SetBool("isWalking", false);
-			Debug.Log("Character is idle");
-		}
-
-		if (Input.GetKeyUp(KeyCode.A))
-		{
-			anim.SetBool("isWalking", false);
-			Debug.Log("Character is idle");
-		}
+		player = GetComponent<Rigidbody2D>();
+		playerRenderer = GetComponent<SpriteRenderer>();
+		playerAudioSource = GetComponent<AudioSource>();
 	}
 
-	void MoveUp()
+	// Update is called once per frame
+	void Update()
 	{
-		anim.SetBool("isWalking", true);
-		Debug.Log("Character is moving up");
-		player.transform.Translate(new Vector3(0f, speedY * Time.deltaTime, 0));
+		Debug.Log(Input.GetAxisRaw("Vertical"));
+
+		if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+		{
+			anim.SetBool("isWalking", true);
+			//MovePlayer();
+		}
+		else
+			anim.SetBool("isWalking", false);
+
+		if (Input.GetKeyDown(KeyCode.E))
+		{
+			if(hasItem == false)
+			{
+				PickUpItem();
+				hasItem = true;
+			}
+			else
+			{
+				PutDownItem();
+				hasItem = false;
+			}
+		}
 	}
 
-	void MoveRight()
+	private void FixedUpdate()
 	{
-		anim.SetBool("isWalking", true);
-		Debug.Log("Character is moving right");
+		horizontalMove = Input.GetAxisRaw("Horizontal");
+		verticalMove = Input.GetAxisRaw("Vertical");
+
+		if (Input.GetAxisRaw("Horizontal") == -1)
+			playerRenderer.flipX = true;
+		else if(Input.GetAxisRaw("Horizontal") == 1)
+			playerRenderer.flipX = false;
+
+
+		player.velocity = new Vector3(horizontalMove * speedX, verticalMove * speedY, 0f);
 	}
 
-	void MoveDown()
+	void PickUpItem()
 	{
-		anim.SetBool("isWalking", true);
-		Debug.Log("Character is moving down");
+		playerAudioSource.clip = pickUpSound;
+		playerAudioSource.Play();
+		anim.SetBool("hasItem", true);
 	}
 
-	void MoveLeft()
+	void PutDownItem()
 	{
-		anim.SetBool("isWalking", true);
-		Debug.Log("Character is moving left");
+		playerAudioSource.clip = putDownSound;
+		playerAudioSource.Play();
+		anim.SetBool("hasItem", false);
 	}
+
+
+
+
 }

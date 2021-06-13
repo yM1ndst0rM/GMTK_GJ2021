@@ -15,6 +15,7 @@ namespace Instruments
         {
             var playback = gameObject.GetComponentInChildren<AudioSource>();
             playback.clip = clip;
+			playback.Play();
         }
     }
 }
