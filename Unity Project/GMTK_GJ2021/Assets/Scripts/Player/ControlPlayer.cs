@@ -98,7 +98,6 @@ public class ControlPlayer : MonoBehaviour
 
     void PickUpItem()
     {
-        Debug.Log($"PickUp on {nameof(ControlPlayer)}");
         _instrumentInteraction.PickUpInstrument();
     }
 
